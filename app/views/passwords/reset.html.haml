@@ -1,0 +1,11 @@
+= title "Reset Your Password", :h2
+- form_for :user, :url => { :action => 'update_after_forgetting' } do |f|
+  = f.error_messages
+  %p Please enter a new password and confirm it.
+	- field_set_tag 'Update Password'
+		= f.password_field :password, :help => 'foobar'
+    = f.password_field :password_confirmation, :help => 'foobar'
+
+	= hidden_field_tag :reset_code, params[:reset_code]
+  .buttons
+    = f.submit "Submit"
