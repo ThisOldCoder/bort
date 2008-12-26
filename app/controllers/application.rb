@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  include HoptoadNotifier::Catcher
   include AuthenticatedSystem
+  include HoptoadNotifier::Catcher
   include RoleRequirementSystem 
 
   helper :all # include all helpers, all the time
@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   
   # Automatically respond with 404 for ActiveRecord::RecordNotFound
   def record_not_found
-    render :file => File.join(RAILS_ROOT, 'public', '404.html'), :status => 404
+    render :file => File.join(RAILS_ROOT, 'public', '404.html'), 
+           :status => 404
   end
 end
 
